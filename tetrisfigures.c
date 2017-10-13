@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/13 00:31:42 by dglaser          ###   ########.fr       */
+/*   Updated: 2017/10/13 00:44:31 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void    accomodatefigure(int *tetconf, int temp) //sets the figure configuration
     else
         return ;
 }
+
+int	ft_hashcount(int *onetet)
+{
+	int i; 
+	int hcount;
+	while (i < 21)
+	{
+		if (onetet[i] == '#')
+			hcount += 1;
+		i++;
+	}
+	if (hcount == 4)
+		return (1);
+	return (0);
+}
+
 int *ft_checkvalidtet(int *tetconfig)
 {
     if (tetconfig[1] == 1)
@@ -63,17 +79,6 @@ int *ft_checkvalidtet(int *tetconfig)
 	else
 		return (-1);
 }
-
-
-
-
-
-        
-
-
-    }
-}
-
 int     **determinefigures(char **tetristr, int tetcount) //determines the configuration of each figure/square given by the file
 {
     int **tetconf;
@@ -92,13 +97,16 @@ int     **determinefigures(char **tetristr, int tetcount) //determines the confi
         i = 0;
         while (tetristr[y][i] != '\0')
         {
-            if (tetristr[y][i] == '#')
-            {
-                tetconf[y][x++] = i - temp;
-                temp = tetconf[y][0];
-            }
-            i++;
-        }
+			if (ft_hashcount(tetristr[y]) == 1)
+			{	
+           	 if (tetristr[y][i] == '#')
+           	 {
+           	     tetconf[y][x++] = i - temp;
+           	     temp = tetconf[y][0];
+           	 }
+           	 i++;
+       		}
+		}
         tetconfig[y] = ft_checkvalidtet(tetconfig[y]);
         if (tetconfig[y] == -1)
             return error; ////make an error message funtion maybe

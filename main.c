@@ -35,9 +35,6 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 	return (y - 1);
 }
 
-//int		ft_fourhashes(char **tetstring)
-//{
-
 char	**ft_tetsplit(char *buf, int tetcount) //splits the file into a 2D char array
 {
 	int		x;
@@ -55,7 +52,7 @@ char	**ft_tetsplit(char *buf, int tetcount) //splits the file into a 2D char arr
 	while (ret[y] != 0)
 		ret[y++] = (char*)malloc(sizeof(char) * 21);
 	y = 0;
-	while((buf[i] != '\0')
+	while(buf[i] != '\0')
 	{
 		ret[y][x++] = buf[i++];//each string of figures finishes with \n\0
 		if (i == n)
@@ -69,6 +66,7 @@ char	**ft_tetsplit(char *buf, int tetcount) //splits the file into a 2D char arr
 	}
 	return (ret);
 }
+
 
 int main (int argc, char **argv)
 {
