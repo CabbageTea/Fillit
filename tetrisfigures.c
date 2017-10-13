@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/10 20:02:02 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/13 00:31:42 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,13 @@ void    mallocintarray(int **tetconf, int tetcount)
     while (tetcount-- > 0)
         tetconf[i++] = (int*)malloc(sizeof(int) * 4);//addprotectionformalloc???
 }
-
 void    accomodatefigure(int *tetconf, int temp) //sets the figure configuration to the coordinates most upper left of the square 
 {
     int i;
     int counter;
     int adjfactor;
-    int y;
 
     i = 0;
-
     counter = 4;
     while
     if (temp > 0)
@@ -49,6 +46,28 @@ int *ft_checkvalidtet(int *tetconfig)
          || ((tetconfig[2] == 2) && (tetconfig[3] == 7)) || ((tetconfig[2] == 6) && (tetconfig[3] == 11)) || ((tetconfig[2] == 2) && (tetconfig[3] == 5))
          || ((tetconfig[2] == 5) && (tetconfig[3] == 6)) || ((tetconfig[2] == 6) && (tetconfig[3] == 7)))
             return (0);
+	if (((tetconfig[1] == 5) && (tetconfig[2] == 6) && (tetconfig[3] == 10)) ||
+			((tetconfig[1] == 5) && (tetconfig[2] == 10) && (tetconfig[3] == 15)) ||
+			((tetconfig[1] == 5) && (tetconfig[2] == 6) && (tetconfig[3] == 7)) ||
+			((tetconfig[1] == 5) && (tetconfig[2] == 10) && (tetconfig[3] == 11)) ||
+			((tetconfig[1] == 5) && (tetconfig[2] == 6) && (tetconfig[3] == 11)))
+		return (0);
+	if  (((tetconfig[1] == 4) && (tetconfig[2] == 5) && (tetconfig[3] == 6)) ||
+			((tetconfig[1] == 4) && (tetconfig[2] == 5) && (tetconfig[3] == 10)) ||
+			((tetconfig[1] == 5) && (tetconfig[2] == 9) && (tetconfig[3] == 10)) ||
+			((tetconfig[1] == 1) && (tetconfig[2] == 4) && (tetconfig[3] == 5)) ||
+			((tetconfig[1] == 4) && (tetconfig[2] == 5) && (tetconfig[3] == 9)))
+		return (1);
+	if ((tetconfig[1] == 3) && (tetconfig[2] == 4) && (tetconfig[3] == 5))
+		return (2);
+	else
+		return (-1);
+}
+
+
+
+
+
         
 
 
