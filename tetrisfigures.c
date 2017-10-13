@@ -21,14 +21,18 @@ void    mallocintarray(int **tetconf, int tetcount)
     while (tetcount-- > 0)
         tetconf[i++] = (int*)malloc(sizeof(int) * 4);//addprotectionformalloc???
 }
+
 void    accomodatefigure(int *tetconf, int temp) //sets the figure configuration to the coordinates most upper left of the square 
 {
     int i;
     int counter;
     int adjfactor;
+    int y;
 
     i = 0;
+
     counter = 4;
+    while
     if (temp > 0)
     {
         adjfactor = tetconf[0];
@@ -37,6 +41,18 @@ void    accomodatefigure(int *tetconf, int temp) //sets the figure configuration
     }
     else
         return ;
+}
+int *ft_checkvalidtet(int *tetconfig)
+{
+    if (tetconfig[1] == 1)
+        if (((tetconfig[2] == 2) && (tetconfig[3] == 6)) || ((tetconfig[2] == 2) && (tetconfig[3] == 3)) || ((tetconfig[2] == 5) && (tetconfig[3] == 10))
+         || ((tetconfig[2] == 2) && (tetconfig[3] == 7)) || ((tetconfig[2] == 6) && (tetconfig[3] == 11)) || ((tetconfig[2] == 2) && (tetconfig[3] == 5))
+         || ((tetconfig[2] == 5) && (tetconfig[3] == 6)) || ((tetconfig[2] == 6) && (tetconfig[3] == 7)))
+            return (0);
+        
+
+
+    }
 }
 
 int     **determinefigures(char **tetristr, int tetcount) //determines the configuration of each figure/square given by the file
@@ -64,6 +80,9 @@ int     **determinefigures(char **tetristr, int tetcount) //determines the confi
             }
             i++;
         }
+        tetconfig[y] = ft_checkvalidtet(tetconfig[y]);
+        if (tetconfig[y] == -1)
+            return error; ////make an error message funtion maybe
         accomodatefigure(tetconf[y], temp);
         y++;
     }
