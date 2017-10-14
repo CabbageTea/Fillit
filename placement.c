@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/12 20:37:50 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 15:32:37 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ int	ft_closetozero(int i, int n)
 			return (i + n);
 	}
 }
-int	ft_checkempty(int i, char *smallest_tetrissq, int *figure)
+int	ft_checkempty(int i, char *smallest_tetrissq, int *figure, int n)
 {
 	int x;
+	int o;
 
+	o = ((n + 1) * n);
 	x = 0;
+	if(((i + figure[1]) > o) || ((i + figure[2]) > o) || ((i + figure[3]) > o))
+			return (0);
 	if((smallest_tetrissq[i + figure[1]] == '.') && (smallest_tetrissq[i + figure[2]] == '.')
 	   && (smallest_tetrissq[i + figure[3]] == '.'))
 		return (1);
@@ -47,7 +51,7 @@ int	ft_placement(char *smallest_tetrissq, int *figure, int n)
 				dist = ft_closetozero(i, n);
 				if(x == dist)
 				{
-					if(ft_checkempty(i, smallest_tetrissq, figure) == 1)
+					if(ft_checkempty(i, smallest_tetrissq, figure, n) == 1)
 						return (i);
 				}
 			}
