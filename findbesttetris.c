@@ -6,12 +6,11 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:59:19 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 16:40:53 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:26:09 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "tetris.h"
+#include "libft.h"
 
 char	*squaresize(int requiredsize)
 {

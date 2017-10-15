@@ -1,5 +1,6 @@
-#include "libft/libft.h"
+#include "libft.h"
 #define BUF_SIZE 105
+
 int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & returns how many ^_^
 {
 	int x;

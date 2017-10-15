@@ -6,12 +6,11 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:16:56 by dglaser          ###   ########.fr       */
+/*   Updated: 2017/10/14 17:27:00 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "tetris.h"
+#include "libft.h"
 
 int	ft_closetozero(int i, int n)
 {

@@ -6,12 +6,11 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 14:59:58 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:27:37 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "tetris.h"
+#include "libft.h"
 
 void	mallocintarray(int **tetconf, int tetcount)
 {
