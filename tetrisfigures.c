@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:27:37 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:35:57 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int		ft_hashcount(int *onetet)
 {
 	int i;
 	int hcount;
+
+	i = 0;
+	hcount = 0;
 	while (i < 21)
 	{
 		if (onetet[i] == '#')

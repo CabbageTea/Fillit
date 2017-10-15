@@ -6,11 +6,13 @@
 #    By: dglaser <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 14:24:42 by dglaser           #+#    #+#              #
-#    Updated: 2017/10/14 17:25:32 by dmontoya         ###   ########.fr        #
+#    Updated: 2017/10/14 17:33:28 by dmontoya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+PROGRAMNAME = fillit
 
 SRC = ft_putchar.c \
 	  ft_putstr.c \
