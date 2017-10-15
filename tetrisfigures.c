@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:35:57 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:52:41 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	mallocintarray(int **tetconf, int tetcount)
 		tetconf[i++] = (int*)malloc(sizeof(int) * 4);
 }
 
-int		ft_hashcount(int *onetet)
+int		ft_hashcount(char *onetet)
 {
 	int i;
 	int hcount;
@@ -37,9 +37,10 @@ int		ft_hashcount(int *onetet)
 	if (hcount == 4)
 		return (1);
 	ft_error();
+	return (-1);
 }
 
-int *ft_checkvalidtet(int *tetconfig)
+int		ft_checkvalidtet(int *tetconfig)
 {
     if (tetconfig[1] == 1)
 		if (((tetconfig[2] == 2) && (tetconfig[3] == 6)) || ((tetconfig[2] == 2) && (tetconfig[3] == 3)) || ((tetconfig[2] == 5) && (tetconfig[3] == 10))
@@ -60,9 +61,10 @@ int *ft_checkvalidtet(int *tetconfig)
 		return (1);
 	if ((tetconfig[1] == 3) && (tetconfig[2] == 4) && (tetconfig[3] == 5))
 		return (2);
-	else
-		ft_error();
+	ft_error();
+	return (-1);
 }
+
 int     **determinefigures(char **tetristr, int tetcount) //determines the configuration of each figure/square given by the file
 {
 	int **tetconf;
@@ -78,7 +80,7 @@ int     **determinefigures(char **tetristr, int tetcount) //determines the confi
         x = 1;
         i = 0;
 		ft_hashcount(tetristr[y]);
-		tetconf[y][0] == ft_checkvalidtet(tetcon[y]);
+		tetconf[y][0] = ft_checkvalidtet(tetconf[y]);
 		while (tetristr[y][i] != '\0')
         {
 			if (tetristr[y][i] == '#')

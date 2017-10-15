@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:27:00 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:54:17 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_closetozero(int i, int n)
 		if (i < 0)
 			return (i + n);
 	}
+	return (i);
 }
+
 int	ft_checkempty(int i, char *smallest_tetrissq, int *figure, int n)
 {
 	int x;

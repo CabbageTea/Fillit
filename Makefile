@@ -6,7 +6,7 @@
 #    By: dglaser <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 14:24:42 by dglaser           #+#    #+#              #
-#    Updated: 2017/10/14 17:33:28 by dmontoya         ###   ########.fr        #
+#    Updated: 2017/10/14 18:05:42 by dmontoya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ SRC = ft_putchar.c \
 	  ft_error.c \
 	  findbesttetris.c \
 	  placement.c \
-	  tetrisfigures.c
-
+	  tetrisfigures.c \
+	  main.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -30,10 +30,11 @@ all: $(NAME)
 
 $(NAME):
 	gcc -Werror -Wall -Wextra -c $(SRC)
-	ar rcs $(NAME) $(OBJ)
+	gcc $(SRC) -o tetris
 
 clean:
 	/bin/rm -f *.o
+	rm *~
 
 fclean: clean
 	/bin/rm -f $(NAME)

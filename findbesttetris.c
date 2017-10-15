@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:59:19 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:44:27 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/14 17:55:28 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int     fillit(char *small_tetris_sq, int *tetconf, int size,  int y)
 	int i;
 
 	i = 0;
-    ipos = ft_placement(small_tetris_sq, tetconf, size);
+    ipos = placement(small_tetris_sq, tetconf, size);
 	if (ipos == -1)
 		return (-1);
 	while (i < 4)
