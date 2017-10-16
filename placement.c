@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:54:17 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/16 00:36:54 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	placement(char *smallest_tetrissq, int *figure, int n)
 
 	x = 0;
 	i = 0;
-	while(x <= n)
+		
+	while (x < ((n - 1) * 2))
 	{
 		while(smallest_tetrissq[i] != '\0')
 		{
@@ -62,6 +63,7 @@ int	placement(char *smallest_tetrissq, int *figure, int n)
 			i++;
 		}
 		x++;
+		i = 0;
 	}
 	return (-1);
 }

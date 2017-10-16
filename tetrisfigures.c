@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/14 17:52:41 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/15 22:17:14 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int		ft_hashcount(char *onetet)
 			hcount += 1;
 		i++;
 	}
+	ft_putstr("YYYYYYEEEASSS");
 	if (hcount == 4)
 		return (1);
+	ft_putstr("yeeeeeesss");
 	ft_error();
 	return (-1);
 }
@@ -65,29 +67,49 @@ int		ft_checkvalidtet(int *tetconfig)
 	return (-1);
 }
 
+int		findfirsthash(char *tetristr)
+{
+	int i;
+
+	i = 0;
+	while (tetristr[i] != '\0')
+	{
+		if (tetristr[i] == '#')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 int     **determinefigures(char **tetristr, int tetcount) //determines the configuration of each figure/square given by the file
 {
 	int **tetconf;
 	int x;
 	int y;
 	int i;
+	int hash;
 
 	y = 0;
     tetconf = (int **)malloc(sizeof(int*) * tetcount);
     mallocintarray(tetconf, tetcount);
     while (y < tetcount)
     {
-        x = 1;
+        x = 0;
         i = 0;
 		ft_hashcount(tetristr[y]);
-		tetconf[y][0] = ft_checkvalidtet(tetconf[y]);
+		hash = findfirsthash(tetristr[y]);
 		while (tetristr[y][i] != '\0')
         {
 			if (tetristr[y][i] == '#')
-				tetconf[y][x++] = i - tetconf[y][0];
+			{
+				tetconf[y][x] = i - hash;
+				x++;
+			}
 			i++;
 		}
+		tetconf[y][0] = ft_checkvalidtet(tetconf[y]);
 		y++;
 	}
+	printf("%d\n, %d\n, %d\n, %d\n", tetconf[1][0], tetconf[1][1], tetconf[1][2], tetconf[1][3]);
     return (tetconf);
 }

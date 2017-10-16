@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <stdio.h>
 #define BUF_SIZE 105
 
 int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & returns how many ^_^
@@ -51,19 +52,25 @@ char	**ft_tetsplit(char *buf, int tetcount) //splits the file into a 2D char arr
 	ret = (char**)malloc(sizeof(char*) * (tetcount + 1));
 	ret[tetcount] = 0;
 	while (ret[y] != 0)
-		ret[y++] = (char*)malloc(sizeof(char) * 21);
+	{
+		ret[y] = (char*)malloc(sizeof(char) * 21);
+		y++;
+	}
 	y = 0;
+	ft_putstr("heyooo");
 	while(buf[i] != '\0')
 	{
-		ret[y][x++] = buf[i++];//each string of figures finishes with \n\0
+		if (i != n)
+			ret[y][x++] = buf[i];//each string of figurey finishes with \n\0
 		if (i == n)
 		{
-			if (buf[i] != '\0')
-				i++;
-			ret[y++][x] = '\0';
+			ret[y][x] = '\0';
+			y++;
 			x = 0;
 			n = n + 21;
 		}
+		//printf("%d\n", i);
+		i++;
 	}
 	return (ret);
 }
@@ -81,7 +88,7 @@ int main (int argc, char **argv)
 
 	str = NULL;
 	if (argc == 2)
-		str = argv[1]; //this takes a file name or path from stdin
+		str = argv[1]; //this takes a file name or path from stdini
 	fd = open(str, O_RDONLY); //reads the file and returns the size
 	if (fd == -1)
 	{
@@ -90,10 +97,18 @@ int main (int argc, char **argv)
 	}
 	ret = read(fd, buf, BUF_SIZE); //read returns the size of buf;
 	tets = ft_validtets(buf);
+	ft_putstr("part1");
 	if (tets == 0)
 		ft_putstr("Tetris Figure Invalid!");
 	tetstrings = ft_tetsplit(buf, tets);
+	ft_putstr(tetstrings[0]);
+	ft_putstr(tetstrings[1]);
+	ft_putstr(tetstrings[2]);
+	ft_putstr(tetstrings[3]);
+	ft_putstr("part2");
 	tetconf = determinefigures(tetstrings, tets);
+	ft_putstr("part3");
+	ft_putchar('\n');
 	ft_putstr(findbesttetris(tetconf, tets));
 	if(fd == - 1)
 	{
