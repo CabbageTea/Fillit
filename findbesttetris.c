@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:59:19 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/16 02:38:08 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/16 20:56:36 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,30 @@ void    empty_string(char *small_tetris_sq)
     }
 }
 
-void	ft_figadjust(int **tc, int size, int tetcount)
+void	ft_figadjust(int **fig, int size, int tetcount)
 {
 	int x;
 	int y;
 	int cadj;
 
 	y = 0;
+	x = 1;
 	cadj = size - 4;
 	while (y < tetcount)
 	{
-		x = 0;
-		while(x < 4)
+		x = 1;
+		while (x < 4)
 		{
-			if (tc[y][0] >= 2 && ((tc[y][x] - tc[y][0] >= 1) && (tc[y][x] - tc[y][0] < 8))) //all 'if conditions' change when size and tetconf changes
-				tc[y][x] = tc[y][x] + cadj;
-			if ((tc[y][x] - tc[y][0] > (4)) && (tc[y][x] - tc[y][0] < (9)))
-				tc[y][x] = tc[y][x] + cadj;
-			else if ((tc[y][x] - tc[y][0] > (9)) && (tc[y][x] - tc[y][0] < (14)))
-				tc[y][x] = tc[y][x] + (cadj * 2);
-			else if (tc[y][x] - tc[y][0] > (14))
-				tc[y][x] = tc[y][x] + (cadj * 3);
+			if ((fig[y][x] > 4) && (fig[y][x] < 9))
+				fig[y][x] = (fig[y][x] + cadj);
+			else if ((fig[y][x] > 8) && (fig[y][x] < 13))
+				fig[y][x] = (fig[y][x] + (cadj * 2));
+			else if (fig[y][x] > 12)
+				fig[y][x] = (fig[y][x] + (cadj * 3));
 			x++;
 		}
 		y++;
+
 	}
 }
 
@@ -103,7 +103,9 @@ int     fillit(char *small_tetris_sq, int *tetconf, int size,  int y)
 char    *recursive_backtrack(char *small_tetris_sq, int **tetconf, int size, int tetcount)
 {
     int y;
+	int **temptetconf;
 
+	temptetconf = tetconf;
 	y = 0;
 	printf("%d\n", tetcount);
     while (y < tetcount)
@@ -111,6 +113,7 @@ char    *recursive_backtrack(char *small_tetris_sq, int **tetconf, int size, int
         if (fillit(small_tetris_sq, tetconf[y], size, y) == -1)
         {
 			size = size + 1;
+			tetconf = temptetconf;
 			ft_figadjust(tetconf, size, tetcount);
 			small_tetris_sq = squaresize(size);
             //empty_string(small_tetris_sq);
@@ -126,7 +129,7 @@ char    *findbesttetris(int **tetconf, int tetcount)
 {
     int     size;
     char    *small_tetris_sq;
-
+	
     size = 4;
     small_tetris_sq = squaresize(size);
     small_tetris_sq = recursive_backtrack(small_tetris_sq, tetconf, size, tetcount);
