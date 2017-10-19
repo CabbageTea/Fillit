@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:53:54 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/17 21:30:35 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/17 22:20:42 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	casezero(int *fig, int size)
 
 	factor = size - 1;
 	x = 1;
-	printf("size in adjust: %d\n", size);
+	//printf("size in adjust: %d\n", size);
 	while (x < 4)
 	{
 		if ((fig[x] > factor) && (fig[x] < (factor * 2 + 1)))
@@ -31,7 +31,7 @@ void	casezero(int *fig, int size)
 			fig[x] = fig[x] + 3;
 		x++;
 	}
-	printf("adjusted configuration: %d, %d, %d, %d\n", fig[0], fig[1], fig[2], fig[3]);
+	//printf("adjusted configuration: %d, %d, %d, %d\n", fig[0], fig[1], fig[2], fig[3]);
 }
 
 void	caseone(int *fig, int size)
@@ -79,7 +79,7 @@ int		**ft_figadjust(int **fig, int size, int tetcount)
 	y = 0;
 	while (y < tetcount)
 	{
-		printf("wtf is this: %d\n", fig[y][0]);
+		//	printf("wtf is this: %d\n", fig[y][0]);
 		if (fig[y][0] == 0)
 			casezero(fig[y], size);
 		else if (fig[y][0] == 1)

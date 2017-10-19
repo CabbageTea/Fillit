@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/15 22:17:14 by dglaser          ###   ########.fr       */
+/*   Updated: 2017/10/17 22:23:34 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ int		ft_hashcount(char *onetet)
 			hcount += 1;
 		i++;
 	}
-	ft_putstr("YYYYYYEEEASSS");
 	if (hcount == 4)
 		return (1);
-	ft_putstr("yeeeeeesss");
 	ft_error();
 	return (-1);
 }
@@ -110,6 +108,5 @@ int     **determinefigures(char **tetristr, int tetcount) //determines the confi
 		tetconf[y][0] = ft_checkvalidtet(tetconf[y]);
 		y++;
 	}
-	printf("%d\n, %d\n, %d\n, %d\n", tetconf[1][0], tetconf[1][1], tetconf[1][2], tetconf[1][3]);
     return (tetconf);
 }
