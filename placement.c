@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/16 01:13:26 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/19 01:04:13 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,16 @@ int	ft_checkempty(int i, char *smallest_tetrissq, int *figure, int n)
 	return (0);
 }
 
-int	placement(char *smallest_tetrissq, int *figure, int n)
+int	placement(char *smallest_tetrissq, int *figure, int n, int i)
 {
 //	int x;
-	int i;
 //	int dist;
 
 //	x = 0;
-	i = 0;
-
-	while(smallest_tetrissq[i] != '\0')
+	if(smallest_tetrissq[i] == '.')
 	{
-		if(smallest_tetrissq[i] == '.')
-		{
-//			dist = ft_closetozero(i, n);
-//			if(x == dist)
-//			{
-				if(ft_checkempty(i, smallest_tetrissq, figure, n) == 1)
-					return (i);
-		}
-		i++;
+		if(ft_checkempty(i, smallest_tetrissq, figure, n) == 1)
+			return (i);
 	}
 	return (-1);
 }

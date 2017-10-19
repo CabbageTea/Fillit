@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:59:19 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/18 18:25:35 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/18 22:53:16 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	*squaresize(int requiredsize)
 	sq[sqsize - 1] = '\0';
 	return (sq);
 }
-/*
+
+
 void    empty_string(char *small_tetris_sq)
 {
     int i;
@@ -47,7 +48,7 @@ void    empty_string(char *small_tetris_sq)
         i++;
     }
 }
-*/
+
 
 int		fillit(char *small_tetris_sq, int *tetconf, int size,  int y)
 {
@@ -101,6 +102,7 @@ char    *recursive_backtrack(char *small_tetris_sq, int **tetconf, int size, int
     int y;
 	int skipped;
 	int ipos;
+	int
 
 	y = 0;
 	skipped = 0;
@@ -140,10 +142,12 @@ char    *findbesttetris(int **tetconf, int tetcount)
 {
     int     size;
     char    *small_tetris_sq;
+	t_point	answer;
 
     size = 4;
     small_tetris_sq = squaresize(size);
-    small_tetris_sq = recursive_backtrack(small_tetris_sq, tetconf, size, tetcount);
+	small_tetris_sq = recursive_backtrack(small_tetris_sq, tetconf, size, tetcount);
+	while
 	return (small_tetris_sq);
 }
 

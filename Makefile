@@ -6,7 +6,7 @@
 #    By: dglaser <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 14:24:42 by dglaser           #+#    #+#              #
-#    Updated: 2017/10/17 19:33:41 by dmontoya         ###   ########.fr        #
+#    Updated: 2017/10/19 00:13:51 by dmontoya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC =	ft_putchar.c \
 	  	ft_memset.c \
 	  	ft_memalloc.c \
 	  	ft_error.c \
-	  	findbesttetris.c \
+	  	recursive_backtracking.c \
 	  	placement.c \
 	  	tetrisfigures.c \
 	  	main.c \

@@ -95,7 +95,7 @@ int main (int argc, char **argv)
 		ft_putstr("error");
 	tetstrings = ft_tetsplit(buf, tets);
 	tetconf = determinefigures(tetstrings, tets);
-	ft_putstr(findbesttetris(tetconf, tets));
+	findbesttetris(tetconf, tets);
 	if(fd == - 1)
 	{
 		ft_putstr("close() error");
