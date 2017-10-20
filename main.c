@@ -15,8 +15,6 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 	{
 		if(buf[x] == '\n') //newlines can only be in these two spots
 		{
-			if ((v % 5 == 4) && (buf[x] != '\n'))
-			   return (0);
 			if ((((v % 5) != 4) && (v % 20) != 0))
 				return (0);
 			if((v % 5) == 4)
@@ -34,6 +32,8 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 		x++;
 		v++;
 	}
+	if (buf[x - 2] == '\n')
+		return (0);
 	return (y - 1);
 }
 
