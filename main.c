@@ -95,6 +95,11 @@ int main (int argc, char **argv)
 		ft_putstr("error");
 	tetstrings = ft_tetsplit(buf, tets);
 	tetconf = determinefigures(tetstrings, tets);
+	if (tets == 1)
+	{
+		ft_onetet(tetconf[0]);
+		exit(1);
+	}
 	findbesttetris(tetconf, tets);
 	if(fd == - 1)
 	{

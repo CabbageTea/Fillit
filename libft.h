@@ -6,7 +6,7 @@
 /*   By: dglaser <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 21:01:42 by dglaser           #+#    #+#             */
-/*   Updated: 2017/10/19 03:27:24 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/20 01:38:12 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void				findbesttetris(int **tetconf, int tetcount);
 int					placement(char *smallest_tetrissq, int *figure, int n, int i);
 int					**determinefigures(char **tetristr, int tetcount);
 int					**ft_figadjust(int **fig, int size, int tetcount);
-
+int					ft_onetet(int *tet);
+char				*squaresize(int	requiredsize);
 #endif
