@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:02:00 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/17 22:23:34 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/20 22:25:15 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ int		ft_hashcount(char *onetet)
 	}
 	if (hcount == 4)
 		return (1);
-	ft_error();
 	return (-1);
 }
 
 int		ft_checkvalidtet(int *tetconfig)
 {
-    if (tetconfig[1] == 1)
+	if (tetconfig[1] == 1)
 		if (((tetconfig[2] == 2) && (tetconfig[3] == 6)) || ((tetconfig[2] == 2) && (tetconfig[3] == 3)) || ((tetconfig[2] == 5) && (tetconfig[3] == 10))
          || ((tetconfig[2] == 2) && (tetconfig[3] == 7)) || ((tetconfig[2] == 6) && (tetconfig[3] == 11)) || ((tetconfig[2] == 2) && (tetconfig[3] == 5))
          || ((tetconfig[2] == 5) && (tetconfig[3] == 6)) || ((tetconfig[2] == 6) && (tetconfig[3] == 7)))
@@ -70,6 +69,8 @@ int		findfirsthash(char *tetristr)
 	int i;
 
 	i = 0;
+	if (ft_hashcount(tetristr) == -1)
+		ft_error();
 	while (tetristr[i] != '\0')
 	{
 		if (tetristr[i] == '#')
@@ -79,12 +80,10 @@ int		findfirsthash(char *tetristr)
 	return (-1);
 }
 
-int     **determinefigures(char **tetristr, int tetcount) //determines the configuration of each figure/square given by the file
+int     **determinefigures(char **tetristr, int tetcount)
 {
-	int **tetconf;
-	int x;
+	int	**tetconf;
 	int y;
-	int i;
 	int hash;
 
 	y = 0;
@@ -92,19 +91,8 @@ int     **determinefigures(char **tetristr, int tetcount) //determines the confi
     mallocintarray(tetconf, tetcount);
     while (y < tetcount)
     {
-        x = 0;
-        i = 0;
-		ft_hashcount(tetristr[y]);
 		hash = findfirsthash(tetristr[y]);
-		while (tetristr[y][i] != '\0')
-        {
-			if (tetristr[y][i] == '#')
-			{
-				tetconf[y][x] = i - hash;
-				x++;
-			}
-			i++;
-		}
+		tetconf = ft_tetconfiguration(tetristr, tetconf, y, hash);
 		tetconf[y][0] = ft_checkvalidtet(tetconf[y]);
 		y++;
 	}

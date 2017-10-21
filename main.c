@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define BUF_SIZE 1000
 
-int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & returns how many ^_^
+int	ft_validtets(char *buf)
 {
 	int x;
 	int y;
@@ -13,7 +13,7 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 	v = 0;
 	while(buf[x] != '\0')
 	{
-		if(buf[x] == '\n') //newlines can only be in these two spots
+		if(buf[x] == '\n')
 		{
 			if ((((v % 5) != 4) && (v % 20) != 0))
 				return (0);
@@ -22,7 +22,7 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 				x++;
 				v++;
 			}
-			if (((v % 20) == 0)) //this moves you to the next shape, so it has to have 4 pound symbols.
+			if (((v % 20) == 0))
 			{
 				x++;
 				y++;
@@ -31,44 +31,42 @@ int	ft_validtets(char *buf) //checks if the file is giving valid tetrominos & re
 		}
 		x++;
 		v++;
+		if ((v % 5 == 4) && (buf[x] != '\n'))
+			return (0);
 	}
 	if (buf[x - 2] == '\n')
 		return (0);
 	return (y - 1);
 }
 
-char	**ft_tetsplit(char *buf, int tetcount) //splits the file into a 2D char array
+char	**ft_tetsplit(char *buf, int tetcount)
 {
 	int		x;
 	int		y;
-	int		n;
 	int		i;
 	char	**ret;
 
 	x = 0;
 	y = 0;
-	n = 20;
-	i = 0;
+	i = -1;
 	ret = (char**)malloc(sizeof(char*) * (tetcount + 1));
 	while (y < tetcount)
 		ret[y++] = (char*)malloc(sizeof(char) * 21);
 	y = 0;
-	while(buf[i] != '\0')
+	tetcount = 20;
+	while (buf[++i] != '\0')
 	{
-		if (i != n)
-			ret[y][x++] = buf[i];//each string of figurey finishes with \n\0
-		if (i == n)
+		if (i != tetcount)
+			ret[y][x++] = buf[i];
+		if (i == tetcount)
 		{
-			ret[y][x] = '\0';
-			y++;
+			ret[y++][x] = '\0';
 			x = 0;
-			n = n + 21;
+			tetcount = tetcount + 21;
 		}
-		i++;
 	}
 	return (ret);
 }
-
 
 int main (int argc, char **argv)
 {
@@ -86,20 +84,15 @@ int main (int argc, char **argv)
 	fd = open(str, O_RDONLY); //reads the file and returns the size
 	if (fd == -1)
 	{
-		ft_putstr("error");
+		ft_error();
 		return (1);
 	}
 	ret = read(fd, buf, BUF_SIZE); //read returns the size of buf;
 	tets = ft_validtets(buf);
 	if (tets == 0)
-		ft_putstr("error");
+		ft_error();
 	tetstrings = ft_tetsplit(buf, tets);
 	tetconf = determinefigures(tetstrings, tets);
-	if (tets == 1)
-	{
-		ft_onetet(tetconf[0]);
-		exit(1);
-	}
 	findbesttetris(tetconf, tets);
 	if(fd == - 1)
 	{

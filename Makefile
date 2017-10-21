@@ -6,7 +6,7 @@
 #    By: dglaser <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/05 14:24:42 by dglaser           #+#    #+#              #
-#    Updated: 2017/10/20 00:51:48 by dglaser          ###   ########.fr        #
+#    Updated: 2017/10/20 01:43:07 by dmontoya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ SRC =	ft_putchar.c \
 	  	placement.c \
 	  	tetrisfigures.c \
 	  	main.c \
-		ft_onetet.c \
-		ft_figadjust.c
+		ft_figadjust.c \
+		utilities.c \
+		ft_twotets.c
 
 OBJ = $(SRC:.c=.o)
 
