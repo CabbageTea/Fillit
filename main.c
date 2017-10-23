@@ -6,12 +6,11 @@
 /*   By: dglaser <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 19:01:35 by dglaser           #+#    #+#             */
-/*   Updated: 2017/10/22 19:03:17 by dglaser          ###   ########.fr       */
+/*   Updated: 2017/10/23 14:52:49 by dmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 #define BUF_SIZE 1000
 
 void		ft_checktet(int x, char *buf)
