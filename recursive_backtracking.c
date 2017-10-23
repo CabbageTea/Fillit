@@ -6,13 +6,13 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 22:52:55 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/20 21:34:50 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/22 17:36:02 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	empty_grid(char *grid, int y)
+int		empty_grid(char *grid, int y, int tetcount)
 {
 	char	a;
 	int		i;
@@ -27,6 +27,7 @@ void	empty_grid(char *grid, int y)
 			grid[i] = '.';
 		i++;
 	}
+	return (tetcount);
 }
 
 int		fillit(char *grid, int *tetconf, int i, int y)
@@ -71,8 +72,7 @@ int		recursive_backtrack(char *grid, int **tetconf, int y, int tetcount)
 			tetconf = ft_figadjust(tetconf, ft_determinesize(grid), tetcount);
 		}
 	}
-	empty_grid(grid, y);
-	return (tetcount);
+	return (empty_grid(grid, y, tetcount));
 }
 
 void	ft_onetet(int *tetconf)
@@ -83,32 +83,32 @@ void	ft_onetet(int *tetconf)
 	tetconf[x++] = 3;
 	tetconf[x] = 4;
 }
-void	findbesttetris(int **tetconf, int tetcount)
+
+void	findbesttetris(int **tc, int tetcount)
 {
 	int		size;
 	char	*grid;
 	int		y;
 
 	y = 0;
-	if (tetcount == 1 && tetconf[0][1] == 1 && tetconf[0][2] == 5 && tetconf[0][3] == 6)
+	if (tetcount == 1 && tc[0][1] == 1 && tc[0][2] == 5 && tc[0][3] == 6)
 	{
-		ft_onetet(tetconf[0]);
+		ft_onetet(tc[0]);
 		grid = squaresize(2);
-		tetcount = recursive_backtrack(grid, tetconf, y, tetcount);
+		tetcount = recursive_backtrack(grid, tc, y, tetcount);
 	}
 	size = 3;
 	if (tetcount <= 2 && tetcount > 0 && size == 3)
 	{
-		tetconf = ft_figadjust(tetconf, size, tetcount);
+		tc = ft_figadjust(tc, size, tetcount);
 		grid = squaresize(size);
-		tetcount = recursive_backtrack(grid, tetconf, y, tetcount);
+		tetcount = recursive_backtrack(grid, tc, y, tetcount);
 		if (tetcount > 0)
-			tetconf = ft_figadjust(tetconf, size, tetcount);
+			tc = ft_figadjust(tc, size, tetcount);
 	}
 	if (tetcount != 0)
 	{
-		size = 4;
-		grid = squaresize(size);
-		recursive_backtrack(grid, tetconf, y, tetcount);
+		grid = squaresize(4);
+		recursive_backtrack(grid, tc, y, tetcount);
 	}
 }

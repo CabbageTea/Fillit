@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/19 22:43:30 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/20 20:23:53 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/22 16:35:35 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_determinesize(char *grid)
 char	*squaresize(int requiredsize)
 {
 	char	*sq;
-	int 	sqsize;
+	int		sqsize;
 	int		newlines;
 
 	newlines = requiredsize;

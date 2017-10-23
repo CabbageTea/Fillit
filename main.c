@@ -73,31 +73,21 @@ int main (int argc, char **argv)
 	int fd;
 	int ret;
 	char buf[BUF_SIZE + 1];
-	char *str;
 	int tets;
 	char **tetstrings;
 	int		**tetconf;
 
-	str = NULL;
-	if (argc == 2)
-		str = argv[1]; //this takes a file name or path from stdini
-	fd = open(str, O_RDONLY); //reads the file and returns the size
-	if (fd == -1)
-	{
+	if (argc != 2)
 		ft_error();
-		return (1);
-	}
-	ret = read(fd, buf, BUF_SIZE); //read returns the size of buf;
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_error();
+	ret = read(fd, buf, BUF_SIZE);
 	tets = ft_validtets(buf);
 	if (tets == 0)
 		ft_error();
 	tetstrings = ft_tetsplit(buf, tets);
 	tetconf = determinefigures(tetstrings, tets);
 	findbesttetris(tetconf, tets);
-	if(fd == - 1)
-	{
-		ft_putstr("close() error");
-		return (1);
-	}
 	return (0);
 }

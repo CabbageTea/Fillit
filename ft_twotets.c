@@ -6,9 +6,10 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 01:17:08 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/20 20:38:51 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/22 16:34:55 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	case_zero(int *fig)
@@ -40,7 +41,7 @@ void	case_one(int *fig)
 		if (fig[x] > 8 && fig[x] < 13)
 			fig[x] = fig[x] - 2;
 		if (fig[x] > 13)
-			fig[x]= fig[x] - 3;
+			fig[x] = fig[x] - 3;
 		x++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dmontoya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 20:37:42 by dmontoya          #+#    #+#             */
-/*   Updated: 2017/10/19 22:17:36 by dmontoya         ###   ########.fr       */
+/*   Updated: 2017/10/22 16:21:36 by dglaser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	ft_checkempty(int i, char *grid, int *fig, int n)
 	o = ((n + 1) * n);
 	x = 0;
 	if (((i + fig[1]) > o) || ((i + fig[2]) > o) || ((i + fig[3]) > o))
-			return (0);
-	if ((grid[i + fig[1]] == '.') && (grid[i + fig[2]] == '.') && (grid[i + fig[3]] == '.'))
+		return (0);
+	if ((grid[i + fig[1]] == '.') && (grid[i + fig[2]] == '.')
+			&& (grid[i + fig[3]] == '.'))
 		return (1);
 	return (0);
 }
