@@ -1,23 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dglaser <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/22 19:01:35 by dglaser           #+#    #+#             */
+/*   Updated: 2017/10/22 19:03:17 by dglaser          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
 #define BUF_SIZE 1000
 
-int	ft_validtets(char *buf)
+void		ft_checktet(int x, char *buf)
 {
-	int x;
-	int y;
-	int v;
+	if (buf[x - 2] == '\n')
+		ft_error();
+}
 
-	x = 0;
-	y = 1;
-	v = 0;
-	while(buf[x] != '\0')
+int			ft_validtets(char *buf, int x, int y, int v)
+{
+	while (buf[x] != '\0')
 	{
-		if(buf[x] == '\n')
+		if (buf[x] == '\n')
 		{
 			if ((((v % 5) != 4) && (v % 20) != 0))
 				return (0);
-			if((v % 5) == 4)
+			if ((v % 5) == 4)
 			{
 				x++;
 				v++;
@@ -34,12 +45,11 @@ int	ft_validtets(char *buf)
 		if ((v % 5 == 4) && (buf[x] != '\n'))
 			return (0);
 	}
-	if (buf[x - 2] == '\n')
-		return (0);
+	ft_checktet(x, buf);
 	return (y - 1);
 }
 
-char	**ft_tetsplit(char *buf, int tetcount)
+char		**ft_tetsplit(char *buf, int tetcount)
 {
 	int		x;
 	int		y;
@@ -68,13 +78,12 @@ char	**ft_tetsplit(char *buf, int tetcount)
 	return (ret);
 }
 
-int main (int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	int fd;
-	int ret;
-	char buf[BUF_SIZE + 1];
-	int tets;
-	char **tetstrings;
+	int		fd;
+	char	buf[BUF_SIZE + 1];
+	int		tets;
+	char	**tetstrings;
 	int		**tetconf;
 
 	if (argc != 2)
@@ -82,8 +91,8 @@ int main (int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_error();
-	ret = read(fd, buf, BUF_SIZE);
-	tets = ft_validtets(buf);
+	read(fd, buf, BUF_SIZE);
+	tets = ft_validtets(buf, 0, 1, 0);
 	if (tets == 0)
 		ft_error();
 	tetstrings = ft_tetsplit(buf, tets);
